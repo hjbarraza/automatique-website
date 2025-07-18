@@ -12,26 +12,86 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-    title: "Automatique - Automatización Sin Código para Empresas",
-    description: "Automatiza procesos empresariales con soluciones sin código. Precios transparentes, implementación rápida, resultados predecibles.",
-    authors: [{ name: "Automatique" }],
+    title: {
+        default: "Automatique - Automatización Sin Código para Empresas",
+        template: "%s | Automatique",
+    },
+    description: "Automatiza procesos empresariales con soluciones sin código. Precios transparentes, implementación rápida, resultados predecibles. Especialistas en automatización empresarial.",
+    keywords: [
+        "automatización",
+        "sin código",
+        "no-code",
+        "procesos empresariales",
+        "workflow automation",
+        "automatización de procesos",
+        "soluciones empresariales",
+        "digitalización",
+        "transformación digital",
+        "automatique"
+    ],
+    authors: [{ name: "Automatique", url: "https://automatique.com" }],
+    creator: "Automatique",
+    publisher: "Automatique",
+    formatDetection: {
+        email: false,
+        address: false,
+        telephone: false,
+    },
+    metadataBase: new URL("https://automatique.com"),
+    alternates: {
+        canonical: "/",
+        languages: {
+            "es-ES": "/",
+            "en-US": "/en",
+        },
+    },
     icons: {
         icon: "/favicon.svg",
+        shortcut: "/favicon.svg",
+        apple: "/favicon.svg",
     },
+    manifest: "/manifest.json",
     openGraph: {
         title: "Automatique - Automatización Sin Código para Empresas",
         description: "Automatiza procesos empresariales con soluciones sin código. Precios transparentes, implementación rápida, resultados predecibles.",
         type: "website",
+        locale: "es_ES",
+        url: "https://automatique.com",
+        siteName: "Automatique",
         images: [
             {
-                url: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/876a447f-f5ec-41f6-ba7b-c4a8eddb16b5/id-preview-88933a9e--1933ac68-47f6-4123-9997-854d53cdaccf.lovable.app-1746685980435.png",
+                url: "/ogimage.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Automatique - Automatización Sin Código para Empresas",
             },
         ],
     },
     twitter: {
         card: "summary_large_image",
         site: "@automatique",
-        images: ["https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/876a447f-f5ec-41f6-ba7b-c4a8eddb16b5/id-preview-88933a9e--1933ac68-47f6-4123-9997-854d53cdaccf.lovable.app-1746685980435.png"],
+        creator: "@automatique",
+        title: "Automatique - Automatización Sin Código para Empresas",
+        description: "Automatiza procesos empresariales con soluciones sin código. Precios transparentes, implementación rápida, resultados predecibles.",
+        images: ["/ogimage.jpg"],
+    },
+    robots: {
+        index: true,
+        follow: true,
+        nocache: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            noimageindex: false,
+            "max-video-preview": -1,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+        },
+    },
+    verification: {
+        google: "your-google-site-verification-code",
+        yandex: "your-yandex-verification-code",
+        yahoo: "your-yahoo-verification-code",
     },
 };
 

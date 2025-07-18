@@ -272,6 +272,145 @@ export const HomeScreen = () => {
 
     return (
         <div className="flex min-h-dvh flex-col">
+            {/* Structured Data */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        name: "Automatique",
+                        description: "Automatiza procesos empresariales con soluciones sin código. Precios transparentes, implementación rápida, resultados predecibles.",
+                        url: "https://automatique.com",
+                        logo: "https://automatique.com/favicon.svg",
+                        image: "https://automatique.com/ogimage.jpg",
+                        sameAs: [
+                            "https://www.linkedin.com/company/automatique",
+                            "https://twitter.com/automatique",
+                            "https://www.facebook.com/automatique",
+                            "https://www.instagram.com/automatique"
+                        ],
+                        contactPoint: {
+                            "@type": "ContactPoint",
+                            contactType: "customer service",
+                            telephone: "+1-555-0123",
+                            email: "info@automatique.com",
+                            availableLanguage: ["Spanish", "English"],
+                            areaServed: ["ES", "MX", "US", "LATAM"]
+                        },
+                        address: [
+                            {
+                                "@type": "PostalAddress",
+                                streetAddress: "1 Bell Slip",
+                                addressLocality: "Brooklyn",
+                                addressRegion: "NY",
+                                postalCode: "11222",
+                                addressCountry: "US"
+                            },
+                            {
+                                "@type": "PostalAddress",
+                                streetAddress: "Passeig del Mare Nostrum, 15",
+                                addressLocality: "Barcelona",
+                                postalCode: "08039",
+                                addressCountry: "ES"
+                            },
+                            {
+                                "@type": "PostalAddress",
+                                streetAddress: "Av. P.º de la Reforma 296, Juárez",
+                                addressLocality: "CDMX",
+                                postalCode: "06600",
+                                addressCountry: "MX"
+                            }
+                        ],
+                        offers: {
+                            "@type": "Offer",
+                            name: "Automatización Empresarial",
+                            description: "Soluciones de automatización sin código para empresas",
+                            price: "490",
+                            priceCurrency: "USD",
+                            priceValidUntil: "2024-12-31",
+                            availability: "https://schema.org/InStock"
+                        },
+                        aggregateRating: {
+                            "@type": "AggregateRating",
+                            ratingValue: "5.0",
+                            reviewCount: "50",
+                            bestRating: "5",
+                            worstRating: "1"
+                        }
+                    })
+                }}
+            />
+            
+            {/* Service Structured Data */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Service",
+                        name: "Automatización Empresarial Sin Código",
+                        description: "Automatiza procesos empresariales con soluciones sin código. Precios transparentes, implementación rápida, resultados predecibles.",
+                        provider: {
+                            "@type": "Organization",
+                            name: "Automatique",
+                            url: "https://automatique.com"
+                        },
+                        serviceType: "Business Process Automation",
+                        areaServed: ["ES", "MX", "US", "LATAM"],
+                        hasOfferCatalog: {
+                            "@type": "OfferCatalog",
+                            name: "Planes de Automatización",
+                            itemListElement: [
+                                {
+                                    "@type": "Offer",
+                                    name: "Starter",
+                                    description: "Perfecto para pequeñas empresas",
+                                    price: "490",
+                                    priceCurrency: "USD",
+                                    priceValidUntil: "2024-12-31"
+                                },
+                                {
+                                    "@type": "Offer",
+                                    name: "Professional",
+                                    description: "Para empresas en crecimiento",
+                                    price: "1490",
+                                    priceCurrency: "USD",
+                                    priceValidUntil: "2024-12-31"
+                                },
+                                {
+                                    "@type": "Offer",
+                                    name: "Enterprise",
+                                    description: "Soluciones a medida",
+                                    price: "4990",
+                                    priceCurrency: "USD",
+                                    priceValidUntil: "2024-12-31"
+                                }
+                            ]
+                        }
+                    })
+                }}
+            />
+            
+            {/* FAQ Structured Data */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "FAQPage",
+                        mainEntity: faqs.slice(0, 10).map(faq => ({
+                            "@type": "Question",
+                            name: faq.question,
+                            acceptedAnswer: {
+                                "@type": "Answer",
+                                text: faq.answer
+                            }
+                        }))
+                    })
+                }}
+            />
+            
             <AutomatiqueHeader />
             {/* Hero Section with Gradient Background */}
             <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 py-16 md:px-8 pt-24">
