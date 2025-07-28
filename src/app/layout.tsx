@@ -13,10 +13,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
     title: {
-        default: "Automatique - Automatización Sin Código para Empresas",
+        default: "Automatique - Reduce Costos 45% y Escala Sin Límites | Automatización Empresarial",
         template: "%s | Automatique",
     },
-    description: "Automatiza procesos empresariales con soluciones sin código. Precios transparentes, implementación rápida, resultados predecibles. Especialistas en automatización empresarial.",
+    description: "Reduce costos operativos hasta 45% mientras escalas sin límites. Misma inversión, triple capacidad: automatización que paga por sí misma en 60 días.",
     keywords: [
         "automatización",
         "sin código",
@@ -52,8 +52,8 @@ export const metadata: Metadata = {
     },
     manifest: "/manifest.json",
     openGraph: {
-        title: "Automatique - Automatización Sin Código para Empresas",
-        description: "Automatiza procesos empresariales con soluciones sin código. Precios transparentes, implementación rápida, resultados predecibles.",
+        title: "Automatique - Automatización que Reduce Costos y Multiplica Capacidad",
+        description: "Reduce costos operativos hasta 45% y escala tu empresa sin contratar más personal. Automatización empresarial con ROI garantizado en 60 días.",
         type: "website",
         locale: "es_ES",
         url: "https://www.tryautomatique.com",
@@ -71,8 +71,8 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         site: "@automatique",
         creator: "@automatique",
-        title: "Automatique - Automatización Sin Código para Empresas",
-        description: "Automatiza procesos empresariales con soluciones sin código. Precios transparentes, implementación rápida, resultados predecibles.",
+        title: "Automatique - Reduce Costos 45% y Escala Sin Límites",
+        description: "Automatización empresarial que reduce costos operativos y multiplica tu capacidad. Misma inversión, triple productividad.",
         images: ["/ogimage.jpg"],
     },
     robots: {

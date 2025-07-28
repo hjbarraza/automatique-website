@@ -280,7 +280,7 @@ export const HomeScreen = () => {
                         "@context": "https://schema.org",
                         "@type": "Organization",
                         name: "Automatique",
-                        description: "Automatiza procesos empresariales con soluciones sin código. Precios transparentes, implementación rápida, resultados predecibles.",
+                        description: "Reduce costos operativos hasta 45% mientras escalas sin límites. Automatización empresarial que paga por sí misma en 60 días.",
                         url: "https://www.tryautomatique.com",
                         logo: "https://www.tryautomatique.com/favicon.svg",
                         image: "https://www.tryautomatique.com/ogimage.jpg",
@@ -325,7 +325,7 @@ export const HomeScreen = () => {
                         offers: {
                             "@type": "Offer",
                             name: "Automatización Empresarial",
-                            description: "Soluciones de automatización sin código para empresas",
+                            description: "Automatización de procesos empresariales con ROI garantizado",
                             price: "490",
                             priceCurrency: "USD",
                             priceValidUntil: "2024-12-31",
@@ -350,7 +350,7 @@ export const HomeScreen = () => {
                         "@context": "https://schema.org",
                         "@type": "Service",
                         name: "Automatización Empresarial Sin Código",
-                        description: "Automatiza procesos empresariales con soluciones sin código. Precios transparentes, implementación rápida, resultados predecibles.",
+                        description: "Reduce costos operativos hasta 45% mientras escalas sin límites. Automatización empresarial que paga por sí misma en 60 días.",
                         provider: {
                             "@type": "Organization",
                             name: "Automatique",
@@ -456,11 +456,11 @@ export const HomeScreen = () => {
                     </Badge> */}
                     
                     <h1 className="max-w-5xl text-display-md sm:text-display-lg md:text-display-xl lg:text-display-xl xl:text-display-2xl 2xl:text-display-2xl 3xl:text-[80px] 3xl:leading-[88px] font-bold text-gray-900 dark:text-white animate-in slide-in-from-bottom-4 duration-700">
-                        Eficiencias y Optimizaciones con IA
+                        Reduce Costos 45% y Escala Sin Límites
                     </h1>
                     
                     <p className="mt-4 sm:mt-6 max-w-2xl text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-3xl 3xl:text-4xl text-gray-600 dark:text-gray-300 animate-in slide-in-from-bottom-4 duration-700 delay-150">
-                        Creamos soluciones a la medida con Inteligencia Artificial para tus procesos empresariales
+                        Misma inversión, triple capacidad: automatización que paga por sí misma en 60 días
                     </p>
                     
                     <div className="mt-6 sm:mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center animate-in slide-in-from-bottom-4 duration-700 delay-300">
