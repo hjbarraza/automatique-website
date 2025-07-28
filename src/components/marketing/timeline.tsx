@@ -16,17 +16,17 @@ interface Timeline9Props {
 
 const Timeline9 = ({ timelineData, title }: Timeline9Props) => {
   return (
-    <section className="bg-primary py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="grid gap-16 lg:grid-cols-12 lg:gap-8">
+    <section id="proceso" className="bg-primary py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:max-w-[1400px] 3xl:max-w-[1600px]">
+        <div className="grid gap-8 sm:gap-12 md:gap-16 lg:grid-cols-12 lg:gap-8 xl:gap-12 2xl:gap-16">
           {/* Title Column */}
           {title && (
             <div className="lg:col-span-4">
               <div className="sticky top-32">
-                <h1 className="text-primary text-display-sm font-semibold tracking-tighter md:text-display-md lg:text-left text-center">
+                <h1 className="text-primary text-display-xs sm:text-display-sm md:text-display-md lg:text-display-md xl:text-display-lg 2xl:text-display-lg 3xl:text-display-xl font-semibold tracking-tighter lg:text-left text-center">
                   {title}
                 </h1>
-                <p className="mt-4 text-lg text-tertiary lg:text-left text-center">
+                <p className="mt-3 sm:mt-4 text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl 2xl:text-2xl 3xl:text-2xl text-tertiary lg:text-left text-center">
                   De la idea a la implementación en 10 días que transformarán tu negocio
                 </p>
               </div>
@@ -46,16 +46,16 @@ const Timeline9 = ({ timelineData, title }: Timeline9Props) => {
                   
                   <div className="flex flex-col gap-2 md:flex-row md:items-start md:gap-6">
                     <div className="flex-1">
-                      <h4 className="text-xl font-bold tracking-tight text-primary">
+                      <h4 className="text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl 2xl:text-3xl 3xl:text-4xl font-bold tracking-tight text-primary">
                         {entry.title}
                       </h4>
-                      <p className="mt-2 text-tertiary">
+                      <p className="mt-2 text-xs sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl 3xl:text-2xl text-tertiary">
                         {entry.content}
                       </p>
                     </div>
                     
                     <div className="md:w-32 md:text-right">
-                      <span className="inline-block rounded-md bg-secondary px-3 py-1 text-sm font-medium text-tertiary">
+                      <span className="inline-block rounded-md bg-secondary px-2 py-0.5 sm:px-3 sm:py-1 text-xs sm:text-sm md:text-sm lg:text-base xl:text-lg 2xl:text-xl 3xl:text-2xl font-medium text-tertiary">
                         {entry.date}
                       </span>
                     </div>
