@@ -1,19 +1,67 @@
-# Untitled UI starter kit for Next.js
+# Automatique - Business Automation Platform
 
-This is an official Untitled UI starter kit for Next.js. Kickstart your Untitled UI project with Next.js in seconds.
+This is the official website repository for Automatique, a business automation platform that helps companies streamline their processes with no-code solutions and AI integration.
 
-## Untitled UI React
+## 🚀 Overview
 
-[Untitled UI React](https://www.untitledui.com/react) is the world’s largest collection of open-source React UI components. Everything you need to design and develop modern, beautiful interfaces—fast.
+Automatique specializes in creating custom AI-powered solutions for business processes, offering transparent pricing, rapid implementation, and predictable results. Our platform helps businesses automate sales, customer management, internal processes, and more.
 
-Built with React 19.1, Tailwind CSS v4.1, TypeScript 5.8, and React Aria, Untitled UI React components deliver modern performance, type safety, and maintainability.
+Visit our live site: [automatique.com](https://automatique.com)
 
-[Learn more](https://www.untitledui.com/react) • [Documentation](https://www.untitledui.com/react/docs/introduction) • [Figma](https://www.untitledui.com/figma) • [FAQs](https://www.untitledui.com/faqs)
+## 🛠 Tech Stack
 
-## Getting started
+- **Framework:** [Next.js 15.3.5](https://nextjs.org/) with App Router
+- **Language:** [TypeScript 5.8](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **UI Components:** [React Aria Components](https://react-spectrum.adobe.com/react-aria/)
+- **Icons:** [Untitled UI Icons](https://www.untitledui.com/icons)
+- **Animations:** [Motion (Framer Motion)](https://motion.dev/)
+- **Theme:** Dark mode support with next-themes
 
-First, run the development server:
+## 🏗 Project Structure
 
+```
+src/
+├── app/                    # Next.js app router pages
+│   ├── home-screen.tsx    # Main landing page component
+│   ├── layout.tsx         # Root layout with metadata
+│   └── page.tsx           # Home page entry
+├── components/            # Reusable components
+│   ├── base/             # Core UI components (buttons, inputs, etc.)
+│   ├── marketing/        # Marketing-specific components
+│   ├── navigation/       # Header and navigation components
+│   └── contact/          # Contact form modal
+├── styles/               # Global styles and theme
+└── utils/               # Utility functions
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/hjbarraza/automatique-website.git
+cd automatique-nextjs
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+3. Run the development server:
 ```bash
 npm run dev
 # or
@@ -24,33 +72,51 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Building for Production
 
-## Resources
+```bash
+npm run build
+npm run start
+```
 
-Untitled UI React is built on top of [Untitled UI Figma](https://www.untitledui.com/figma), the world's largest and most popular Figma UI kit and design system. Explore more:
+## 📱 Responsive Design
 
-**[Untitled UI Figma:](https://www.untitledui.com/react/resources/figma-files)** The world's largest Figma UI kit and design system.
-<br/>
-**[Untitled UI Icons:](https://www.untitledui.com/react/resources/icons)** A clean, consistent, and neutral icon library crafted specifically for modern UI design.
-<br/>
-**[Untitled UI file icons:](https://www.untitledui.com/react/resources/file-icons)** Free file format icons, designed specifically for modern web and UI design.
-<br/>
-**[Untitled UI flag icons:](https://www.untitledui.com/react/resources/flag-icons)** Free country flag icons, designed specifically for modern web and UI design.
-<br/>
-**[Untitled UI avatars:](https://www.untitledui.com/react/resources/avatars)** Free placeholder user avatars and profile pictures to use in your projects.
-<br/>
-**[Untitled UI logos:](https://www.untitledui.com/react/resources/logos)** Free fictional company logos to use in your projects.
+The website is fully responsive with breakpoints optimized for:
+- **Mobile:** < 640px
+- **Tablet:** 640px - 1024px
+- **Desktop:** 1024px - 1536px
+- **Ultrawide:** 1536px+
 
-## License
+## 🎨 Features
 
-Untitled UI React open-source components are licensed under the MIT license, which means you can use them for free in unlimited commercial projects.
+- **Hero Section:** Eye-catching gradient animations with responsive scaling
+- **Services Showcase:** Four main service categories with detailed benefits
+- **Process Timeline:** Visual representation of our 10-day implementation process
+- **Pricing Plans:** Three tiers with monthly/annual toggle
+- **Testimonials:** Client success stories
+- **FAQ Section:** Comprehensive Q&A with expandable items
+- **Contact Modal:** Integrated contact form for lead generation
+- **SEO Optimized:** Complete with meta tags and structured data
 
-> [!NOTE]
-> This license applies only to the starter kit and to the components included in this open-source repository. [Untitled UI React PRO](https://www.untitledui.com/react) includes hundreds more advanced UI components and page examples and is subject to a separate [license agreement](https://www.untitledui.com/license).
+## 🌐 Deployment
 
-[Untitled UI license agreement →](https://www.untitledui.com/license)
+The site is deployed on [Vercel](https://vercel.com) and automatically deploys from the main branch.
 
-[Frequently asked questions →](https://www.untitledui.com/faqs)
+## 📝 License
+
+This project is proprietary software owned by Automatique. All rights reserved.
+
+## 🤝 Contributing
+
+This is a private repository. For any questions or suggestions, please contact the development team.
+
+## 📧 Contact
+
+- Website: [automatique.com](https://automatique.com)
+- Email: info@automatique.com
+
+---
+
+Built with ❤️ by the Automatique team
