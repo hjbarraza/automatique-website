@@ -281,9 +281,9 @@ export const HomeScreen = () => {
                         "@type": "Organization",
                         name: "Automatique",
                         description: "Automatiza procesos empresariales con soluciones sin código. Precios transparentes, implementación rápida, resultados predecibles.",
-                        url: "https://automatique.com",
-                        logo: "https://automatique.com/favicon.svg",
-                        image: "https://automatique.com/ogimage.jpg",
+                        url: "https://www.tryautomatique.com",
+                        logo: "https://www.tryautomatique.com/favicon.svg",
+                        image: "https://www.tryautomatique.com/ogimage.jpg",
                         sameAs: [
                             "https://www.linkedin.com/company/automatique",
                             "https://twitter.com/automatique",
@@ -294,7 +294,7 @@ export const HomeScreen = () => {
                             "@type": "ContactPoint",
                             contactType: "customer service",
                             telephone: "+1-555-0123",
-                            email: "info@automatique.com",
+                            email: "info@tryautomatique.com",
                             availableLanguage: ["Spanish", "English"],
                             areaServed: ["ES", "MX", "US", "LATAM"]
                         },
@@ -354,7 +354,7 @@ export const HomeScreen = () => {
                         provider: {
                             "@type": "Organization",
                             name: "Automatique",
-                            url: "https://automatique.com"
+                            url: "https://www.tryautomatique.com"
                         },
                         serviceType: "Business Process Automation",
                         areaServed: ["ES", "MX", "US", "LATAM"],

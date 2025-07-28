@@ -29,7 +29,7 @@ export const metadata: Metadata = {
         "transformación digital",
         "automatique"
     ],
-    authors: [{ name: "Automatique", url: "https://automatique.com" }],
+    authors: [{ name: "Automatique", url: "https://www.tryautomatique.com" }],
     creator: "Automatique",
     publisher: "Automatique",
     formatDetection: {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
         address: false,
         telephone: false,
     },
-    metadataBase: new URL("https://automatique.com"),
+    metadataBase: new URL("https://www.tryautomatique.com"),
     alternates: {
         canonical: "/",
         languages: {
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
         description: "Automatiza procesos empresariales con soluciones sin código. Precios transparentes, implementación rápida, resultados predecibles.",
         type: "website",
         locale: "es_ES",
-        url: "https://automatique.com",
+        url: "https://www.tryautomatique.com",
         siteName: "Automatique",
         images: [
             {

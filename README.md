@@ -6,7 +6,7 @@ This is the official website repository for Automatique, a business automation p
 
 Automatique specializes in creating custom AI-powered solutions for business processes, offering transparent pricing, rapid implementation, and predictable results. Our platform helps businesses automate sales, customer management, internal processes, and more.
 
-Visit our live site: [automatique.com](https://automatique.com)
+Visit our live site: [tryautomatique.com](https://www.tryautomatique.com)
 
 ## 🛠 Tech Stack
 
@@ -114,8 +114,8 @@ This is a private repository. For any questions or suggestions, please contact t
 
 ## 📧 Contact
 
-- Website: [automatique.com](https://automatique.com)
-- Email: info@automatique.com
+- Website: [tryautomatique.com](https://www.tryautomatique.com)
+- Email: info@tryautomatique.com
 
 ---
 
