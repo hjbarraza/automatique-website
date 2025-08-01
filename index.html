@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Automatique - Automatización de Procesos Empresariales</title>
+    <meta name="description" content="Automatiza procesos empresariales con inteligencia artificial. Reduce costos 45% y escala sin límites. ROI garantizado en 60 días.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tryautomatique.com/">
+    <meta property="og:title" content="Automatique - Automatización de Procesos Empresariales">
+    <meta property="og:description" content="Automatiza procesos empresariales con inteligencia artificial. Reduce costos 45% y escala sin límites.">
+    <meta property="og:image" content="/ogimage.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tryautomatique.com/">
+    <meta property="twitter:title" content="Automatique - Automatización de Procesos Empresariales">
+    <meta property="twitter:description" content="Automatiza procesos empresariales con inteligencia artificial. Reduce costos 45% y escala sin límites.">
+    <meta property="twitter:image" content="/ogimage.jpg">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -17,10 +36,6 @@
         .bg-accent-blue { background-color: #0066FF; }
         .border-accent-blue { border-color: #0066FF; }
         
-        /* Animación para números */
-        .number-animate {
-            display: inline-block;
-        }
         
         /* Hover con toque de azul */
         .hover-accent:hover {
@@ -28,11 +43,6 @@
             transform: translateX(4px);
         }
         
-        /* Gráfico isométrico base */
-        .isometric {
-            transform: rotateX(60deg) rotateZ(-45deg);
-            transform-style: preserve-3d;
-        }
         
         /* Sombra azul sutil */
         .blue-glow {
@@ -69,7 +79,6 @@
         
         .animate-float-slow { animation: float-slow 4s ease-in-out infinite; }
         .animate-float-medium { animation: float-medium 3s ease-in-out infinite; }
-        .animate-float-fast { animation: float-fast 2s ease-in-out infinite; }
         
         /* Pulso animado */
         @keyframes pulse-blue {
@@ -928,37 +937,6 @@
                 ease: 'power3.out'
             });
             
-        // Animación de números
-        function animateNumbers() {
-            document.querySelectorAll('.number-animate').forEach(element => {
-                const finalValue = parseFloat(element.getAttribute('data-value'));
-                const isDecimal = element.getAttribute('data-value').includes('.');
-                
-                gsap.fromTo(element, 
-                    { textContent: 0 },
-                    {
-                        textContent: finalValue,
-                        duration: 2,
-                        ease: 'power2.out',
-                        snap: { textContent: isDecimal ? 0.1 : 1 },
-                        scrollTrigger: {
-                            trigger: element,
-                            start: 'top 80%',
-                            once: true
-                        },
-                        onUpdate: function() {
-                            if (isDecimal) {
-                                element.textContent = parseFloat(element.textContent).toFixed(1) + '%';
-                            } else {
-                                element.textContent = Math.round(element.textContent);
-                            }
-                        }
-                    }
-                );
-            });
-        }
-        
-        animateNumbers();
 
         // Scroll-triggered animations
         gsap.utils.toArray('.fade-in').forEach((element, index) => {
