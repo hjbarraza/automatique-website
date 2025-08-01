@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatique - Automatización de Procesos Empresariales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .fade-in { opacity: 0; transform: translateY(30px); }
+        
+        /* Color de acento azul eléctrico */
+        .accent-blue { color: #0066FF; }
+        .bg-accent-blue { background-color: #0066FF; }
+        .border-accent-blue { border-color: #0066FF; }
+        
+        /* Animación para números */
+        .number-animate {
+            display: inline-block;
+        }
+        
+        /* Hover con toque de azul */
+        .hover-accent:hover {
+            color: #0066FF;
+            transform: translateX(4px);
+        }
+        
+        /* Gráfico isométrico base */
+        .isometric {
+            transform: rotateX(60deg) rotateZ(-45deg);
+            transform-style: preserve-3d;
+        }
+        
+        /* Sombra azul sutil */
+        .blue-glow {
+            box-shadow: 0 4px 20px -4px rgba(0, 102, 255, 0.25);
+        }
+        
+        /* Línea decorativa animada */
+        .animated-line {
+            background: linear-gradient(90deg, transparent, #0066FF, transparent);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        
+        /* Animaciones de flotación */
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes float-medium {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        @keyframes float-fast {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .animate-float-slow { animation: float-slow 4s ease-in-out infinite; }
+        .animate-float-medium { animation: float-medium 3s ease-in-out infinite; }
+        .animate-float-fast { animation: float-fast 2s ease-in-out infinite; }
+        
+        /* Pulso animado */
+        @keyframes pulse-blue {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .animated-pulse { animation: pulse-blue 2s ease-in-out infinite; }
+        
+        /* Grid fade effect */
+        .grid-fade {
+            mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+        }
+
+        /* Modal Animation */
+        @keyframes modal-enter {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-modal-enter {
+            animation: modal-enter 0.2s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <svg class="w-8 h-8" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd" d="m18.3279 33.2066c.8291-.9948 2.0572-1.5701 3.3523-1.5701h17.5925c4.82 0 8.7273-3.9073 8.7273-8.7272v-4.3637c0-4.8199-3.9073-8.72724-8.7273-8.72724h-3.4107c-1.295 0-2.5232.57524-3.3522 1.57014l-2.8377 3.4052c-.8291.9949-2.0572 1.5701-3.3523 1.5701h-17.59253c-4.81994 0-8.72727 3.9073-8.72727 8.7273v4.3636c0 4.82 3.90733 8.7273 8.72727 8.7273h3.41073c1.295 0 2.5232-.5752 3.3522-1.5701zm23.1266-14.661c0-1.205-.9768-2.1818-2.1818-2.1818h-6.6834c-1.2951 0-2.5232.5752-3.3523 1.5701l-2.8377 3.4053c-.829.9948-2.0572 1.5701-3.3522 1.5701h-14.31983c-1.20498 0-2.18182.9768-2.18182 2.1818v4.3636c0 1.205.97684 2.1818 2.18182 2.1818h6.68343c1.2951 0 2.5232-.5752 3.3523-1.5701l2.8377-3.4052c.829-.9949 2.0572-1.5701 3.3522-1.5701h14.3198c1.205 0 2.1818-.9768 2.1818-2.1818z" class="fill-gray-900" fill-rule="evenodd"></path>
+                    </svg>
+                    <h1 class="text-2xl font-semibold tracking-tight">Automatique<span class="accent-blue">.</span></h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition hover-accent">Características</a>
+                    <a href="#how-it-works" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition hover-accent">Cómo Funciona</a>
+                    <a href="#pricing" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition hover-accent">Precios</a>
+                    <a href="#faq" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition hover-accent">Preguntas Frecuentes</a>
+                    <button onclick="openContactModal()" class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gray-900 rounded-full hover:bg-gray-800 transition">
+                        Habla con un asesor
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center pt-16 relative overflow-hidden">
+        <!-- Grid Background -->
+        <div class="absolute inset-0 -top-20 grid-fade">
+            <div class="absolute inset-0 bg-gradient-to-b from-gray-50 via-transparent to-transparent opacity-50"></div>
+            <svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e5e7eb" stroke-width="1" opacity="0.5"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+                <!-- Puntos de acento en intersecciones -->
+                <circle cx="50%" cy="20%" r="2" fill="#0066FF" opacity="0.3" class="animated-pulse"/>
+                <circle cx="30%" cy="35%" r="2" fill="#0066FF" opacity="0.2" class="animated-pulse" style="animation-delay: 0.5s"/>
+                <circle cx="70%" cy="40%" r="2" fill="#0066FF" opacity="0.2" class="animated-pulse" style="animation-delay: 1s"/>
+                <circle cx="25%" cy="60%" r="2" fill="#0066FF" opacity="0.1" class="animated-pulse" style="animation-delay: 1.5s"/>
+                <circle cx="80%" cy="65%" r="2" fill="#0066FF" opacity="0.1" class="animated-pulse" style="animation-delay: 2s"/>
+            </svg>
+        </div>
+        
+        <div class="w-full relative z-10">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in">
+                        <!-- Badge de descuento -->
+                        <div class="inline-flex items-center gap-2 bg-green-50 border border-green-200 rounded-full px-4 py-2 mb-8">
+                            <div class="w-2 h-2 bg-green-500 rounded-full animated-pulse"></div>
+                            <span class="text-sm font-medium text-green-700">Descuento 30%</span>
+                            <span class="text-sm text-green-600">Para nuevos clientes</span>
+                            <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                        
+                        <h1 class="text-5xl lg:text-7xl font-light leading-tight mb-6">
+                            Automatiza, Reduce Costos y Escala Sin Límites
+                        </h1>
+                        <p class="text-xl text-gray-600 mb-8 leading-relaxed max-w-lg">
+                            Utilizamos agentes de inteligencia artifical para crear eficiencias y disparar la productividad y rentabilidad de tu empresa.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button onclick="openContactModal()" class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white bg-gray-900 rounded-full hover:bg-gray-800 transition group">
+                                <span>Habla con un asesor</span>
+                                <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="fade-in relative">
+                        <!-- Imagen de Profesional -->
+                        <div class="relative">
+                            <div class="relative overflow-hidden rounded-2xl">
+                                <!-- Placeholder para imagen - reemplazar con imagen real -->
+                                <div class="aspect-w-4 aspect-h-3 bg-gradient-to-br from-gray-100 to-gray-200">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
+                                        alt="Profesional de negocios confiado"
+                                        class="w-full h-full object-cover object-center"
+                                    />
+                                </div>
+                                
+                                <!-- Overlay con estadísticas -->
+                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
+                                    <div class="grid grid-cols-3 gap-4 text-white">
+                                        <div class="text-center">
+                                            <p class="text-2xl font-bold">500+</p>
+                                            <p class="text-sm opacity-90">Integraciones</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <p class="text-2xl font-bold">75%</p>
+                                            <p class="text-sm opacity-90">Ahorro promedio</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <p class="text-2xl font-bold">60</p>
+                                            <p class="text-sm opacity-90">Días para ROI</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Elementos decorativos flotantes -->
+                                <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg animate-float-slow">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                        <span class="text-sm font-medium">Automatizando ahora</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="absolute top-20 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg animate-float-medium">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-5 h-5 text-accent-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                        </svg>
+                                        <span class="text-sm font-medium">+250% Productividad</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section id="features" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h3 class="text-base font-semibold text-gray-600 mb-4">CAPACIDADES</h3>
+                <div class="w-20 h-0.5 animated-line mx-auto mb-8"></div>
+                <h2 class="text-4xl font-light">Automatización empresarial, simplificada</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="fade-in bg-white p-8 rounded-2xl border border-gray-200 group hover:border-gray-300 transition-all duration-300 hover:shadow-lg">
+                    <div class="w-12 h-12 bg-gray-900 rounded-lg mb-6 relative overflow-hidden group-hover:blue-glow transition-all duration-300">
+                        <div class="absolute inset-0 bg-accent-blue opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                        <svg class="w-6 h-6 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">Automatización de Ventas</h4>
+                    <p class="text-gray-600 leading-relaxed">Optimiza la calificación de leads, seguimientos y gestión del pipeline con flujos de trabajo inteligentes.</p>
+                </div>
+                <div class="fade-in bg-white p-8 rounded-2xl border border-gray-200 group hover:border-gray-300 transition-all duration-300 hover:shadow-lg">
+                    <div class="w-12 h-12 bg-gray-900 rounded-lg mb-6 relative overflow-hidden group-hover:blue-glow transition-all duration-300">
+                        <div class="absolute inset-0 bg-accent-blue opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                        <svg class="w-6 h-6 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">Gestión de Clientes</h4>
+                    <p class="text-gray-600 leading-relaxed">Automatiza tickets de soporte, secuencias de onboarding y comunicación con clientes a escala.</p>
+                </div>
+                <div class="fade-in bg-white p-8 rounded-2xl border border-gray-200 group hover:border-gray-300 transition-all duration-300 hover:shadow-lg">
+                    <div class="w-12 h-12 bg-gray-900 rounded-lg mb-6 relative overflow-hidden group-hover:blue-glow transition-all duration-300">
+                        <div class="absolute inset-0 bg-accent-blue opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                        <svg class="w-6 h-6 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">Procesos Internos</h4>
+                    <p class="text-gray-600 leading-relaxed">Elimina tareas manuales en todos los departamentos con flujos de automatización personalizados.</p>
+                </div>
+                <div class="fade-in bg-white p-8 rounded-2xl border border-gray-200 group hover:border-gray-300 transition-all duration-300 hover:shadow-lg">
+                    <div class="w-12 h-12 bg-gray-900 rounded-lg mb-6 relative overflow-hidden group-hover:blue-glow transition-all duration-300">
+                        <div class="absolute inset-0 bg-accent-blue opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                        <svg class="w-6 h-6 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">Plataforma Sin Código</h4>
+                    <p class="text-gray-600 leading-relaxed">Construye y despliega automatizaciones sin experiencia técnica o recursos de desarrollo.</p>
+                </div>
+                <div class="fade-in bg-white p-8 rounded-2xl border border-gray-200 group hover:border-gray-300 transition-all duration-300 hover:shadow-lg">
+                    <div class="w-12 h-12 bg-gray-900 rounded-lg mb-6 relative overflow-hidden group-hover:blue-glow transition-all duration-300">
+                        <div class="absolute inset-0 bg-accent-blue opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                        <svg class="w-6 h-6 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">Integración con IA</h4>
+                    <p class="text-gray-600 leading-relaxed">Aprovecha la inteligencia artificial para mejorar la toma de decisiones y optimización de procesos.</p>
+                </div>
+                <div class="fade-in bg-white p-8 rounded-2xl border border-gray-200 group hover:border-gray-300 transition-all duration-300 hover:shadow-lg">
+                    <div class="w-12 h-12 bg-gray-900 rounded-lg mb-6 relative overflow-hidden group-hover:blue-glow transition-all duration-300">
+                        <div class="absolute inset-0 bg-accent-blue opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                        <svg class="w-6 h-6 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">Integración de Sistemas</h4>
+                    <p class="text-gray-600 leading-relaxed">Conéctate sin problemas con tus herramientas e infraestructura existentes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h3 class="text-base font-semibold text-gray-600 mb-4">CÓMO FUNCIONA</h3>
+                <div class="w-20 h-0.5 animated-line mx-auto mb-8"></div>
+                <h2 class="text-4xl font-light mb-4">De la idea a la implementación en 10 días</h2>
+                <p class="text-xl text-gray-600">Una transformación que revolucionará tu negocio</p>
+            </div>
+            
+            <!-- Timeline - Diseño simple con círculos a la izquierda -->
+            <div class="relative fade-in hidden md:block">
+                <div class="max-w-3xl mx-auto">
+                    <div class="relative">
+                        
+                        <!-- Step 1 -->
+                        <div class="relative flex items-start mb-16">
+                            <!-- Círculo -->
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center text-white font-semibold z-10 blue-glow">
+                                    1
+                                </div>
+                            </div>
+                            
+                            <!-- Contenido -->
+                            <div class="ml-8 flex-1">
+                                <div class="flex items-baseline justify-between mb-2">
+                                    <h4 class="text-xl font-semibold">Auditoría y Análisis</h4>
+                                    <span class="text-sm font-medium text-gray-500 ml-4">Día 1-2</span>
+                                </div>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Analizamos tus procesos actuales, identificamos oportunidades de automatización y definimos KPIs de éxito. Incluye mapeo de flujos de trabajo y evaluación de sistemas existentes.
+                                </p>
+                            </div>
+                        </div>
+                
+                        <!-- Step 2 -->
+                        <div class="relative flex items-start mb-16">
+                            <!-- Círculo -->
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center text-white font-semibold z-10 blue-glow">
+                                    2
+                                </div>
+                            </div>
+                            
+                            <!-- Contenido -->
+                            <div class="ml-8 flex-1">
+                                <div class="flex items-baseline justify-between mb-2">
+                                    <h4 class="text-xl font-semibold">Diseño y Configuración</h4>
+                                    <span class="text-sm font-medium text-gray-500 ml-4">Día 3-5</span>
+                                </div>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Creamos el blueprint de automatización personalizado para tu empresa. Configuramos integraciones, definimos reglas de negocio y preparamos el entorno de desarrollo.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3 -->
+                        <div class="relative flex items-start mb-16">
+                            <!-- Círculo -->
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center text-white font-semibold z-10 blue-glow">
+                                    3
+                                </div>
+                            </div>
+                            
+                            <!-- Contenido -->
+                            <div class="ml-8 flex-1">
+                                <div class="flex items-baseline justify-between mb-2">
+                                    <h4 class="text-xl font-semibold">Implementación y Pruebas</h4>
+                                    <span class="text-sm font-medium text-gray-500 ml-4">Día 6-7</span>
+                                </div>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Desplegamos las automatizaciones en un entorno de pruebas, realizamos testing exhaustivo y refinamos los procesos según feedback del equipo.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 4 -->
+                        <div class="relative flex items-start">
+                            <!-- Círculo -->
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center text-white font-semibold z-10 blue-glow">
+                                    4
+                                </div>
+                            </div>
+                            
+                            <!-- Contenido -->
+                            <div class="ml-8 flex-1">
+                                <div class="flex items-baseline justify-between mb-2">
+                                    <h4 class="text-xl font-semibold">Go Live y Optimización</h4>
+                                    <span class="text-sm font-medium text-gray-500 ml-4">Día 8-10</span>
+                                </div>
+                                <p class="text-gray-600 text-sm leading-relaxed">
+                                    Lanzamos las automatizaciones en producción, monitoreamos el rendimiento y realizamos ajustes finales. Incluye capacitación del equipo y documentación completa.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile Timeline -->
+            <div class="relative fade-in md:hidden">
+                <div class="space-y-8">
+                    <!-- Step 1 Mobile -->
+                    <div class="flex">
+                        <div class="flex-shrink-0 w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center text-white font-semibold">
+                            1
+                        </div>
+                        <div class="ml-4 flex-1">
+                            <span class="text-sm font-medium text-gray-500">Día 1-2</span>
+                            <h4 class="text-xl font-semibold mt-1 mb-2">Auditoría y Análisis</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Analizamos tus procesos actuales, identificamos oportunidades de automatización y definimos KPIs de éxito.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 Mobile -->
+                    <div class="flex">
+                        <div class="flex-shrink-0 w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center text-white font-semibold">
+                            2
+                        </div>
+                        <div class="ml-4 flex-1">
+                            <span class="text-sm font-medium text-gray-500">Día 3-5</span>
+                            <h4 class="text-xl font-semibold mt-1 mb-2">Diseño y Configuración</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Creamos el blueprint de automatización personalizado y configuramos integraciones.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 Mobile -->
+                    <div class="flex">
+                        <div class="flex-shrink-0 w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center text-white font-semibold">
+                            3
+                        </div>
+                        <div class="ml-4 flex-1">
+                            <span class="text-sm font-medium text-gray-500">Día 6-7</span>
+                            <h4 class="text-xl font-semibold mt-1 mb-2">Implementación y Pruebas</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Desplegamos automatizaciones en entorno de pruebas y realizamos testing exhaustivo.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4 Mobile -->
+                    <div class="flex">
+                        <div class="flex-shrink-0 w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center text-white font-semibold">
+                            4
+                        </div>
+                        <div class="ml-4 flex-1">
+                            <span class="text-sm font-medium text-gray-500">Día 8-10</span>
+                            <h4 class="text-xl font-semibold mt-1 mb-2">Go Live y Optimización</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Lanzamos en producción, monitoreamos el rendimiento y proporcionamos capacitación.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h3 class="text-base font-semibold text-gray-600 mb-4">PRECIOS</h3>
+                <div class="w-20 h-0.5 animated-line mx-auto mb-8"></div>
+                <h2 class="text-4xl font-light">Precios transparentes, ROI garantizado</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="fade-in bg-white border border-gray-200 rounded-2xl p-8">
+                    <h4 class="text-2xl font-semibold mb-2">Inicial</h4>
+                    <p class="text-gray-600 mb-6">Para equipos en crecimiento</p>
+                    <div class="mb-8">
+                        <span class="text-4xl font-light">$490</span>
+                        <span class="text-gray-600">/mes</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-gray-900 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">5 procesos automatizados</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-gray-900 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">2,000 tareas mensuales</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-gray-900 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">Soporte por email</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="fade-in bg-gray-900 text-white rounded-2xl p-8 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-accent-blue text-white px-4 py-1 text-sm font-medium rounded-full blue-glow">
+                        Más Popular
+                    </div>
+                    <h4 class="text-2xl font-semibold mb-2">Profesional</h4>
+                    <p class="text-gray-400 mb-6">Para empresas en expansión</p>
+                    <div class="mb-8">
+                        <span class="text-4xl font-light">$1,490</span>
+                        <span class="text-gray-400">/mes</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-white mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-300">15 procesos automatizados</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-white mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-300">10,000 tareas mensuales</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-white mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-300">Soporte prioritario 24/7</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-white mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-300">Gerente de cuenta dedicado</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="fade-in bg-white border border-gray-200 rounded-2xl p-8">
+                    <h4 class="text-2xl font-semibold mb-2">Empresa</h4>
+                    <p class="text-gray-600 mb-6">Para grandes organizaciones</p>
+                    <div class="mb-8">
+                        <span class="text-4xl font-light">$4,990+</span>
+                        <span class="text-gray-600">/mes</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-gray-900 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">50+ procesos</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-gray-900 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">Tareas ilimitadas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-gray-900 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">Integraciones personalizadas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-gray-900 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">Soporte premium</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Single CTA Button -->
+            <div class="mt-12 text-center">
+                <button onclick="openContactModal()" class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white bg-gray-900 rounded-full hover:bg-gray-800 transition group">
+                    <span>Habla con un asesor</span>
+                    <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h3 class="text-base font-semibold text-gray-600 mb-4">PREGUNTAS FRECUENTES</h3>
+                <div class="w-20 h-0.5 animated-line mx-auto mb-8"></div>
+                <h2 class="text-4xl font-light">Preguntas frecuentes</h2>
+            </div>
+            <div class="space-y-4 fade-in">
+                <!-- Question 1 -->
+                <div class="bg-white rounded-lg border border-gray-200">
+                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-medium text-gray-900">¿Cuánto tiempo toma implementar las automatizaciones?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content overflow-hidden transition-all duration-300 max-h-0">
+                        <div class="px-6 pb-4 text-gray-600">
+                            La mayoría de las automatizaciones se implementan en 3-7 días. Los proyectos más complejos pueden tomar hasta 2 semanas, pero comenzarás a ver resultados desde el primer día.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="bg-white rounded-lg border border-gray-200">
+                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-medium text-gray-900">¿Necesito conocimientos técnicos para usar Automatique?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content overflow-hidden transition-all duration-300 max-h-0">
+                        <div class="px-6 pb-4 text-gray-600">
+                            No, nuestras soluciones están diseñadas para ser usadas sin conocimientos técnicos. Además, ofrecemos formación completa y soporte continuo.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="bg-white rounded-lg border border-gray-200">
+                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-medium text-gray-900">¿Qué pasa con mis sistemas actuales?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content overflow-hidden transition-all duration-300 max-h-0">
+                        <div class="px-6 pb-4 text-gray-600">
+                            Automatique se integra perfectamente con tus herramientas existentes. No necesitas cambiar de sistemas, nosotros nos conectamos con lo que ya usas.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="bg-white rounded-lg border border-gray-200">
+                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-medium text-gray-900">¿Puedo cancelar en cualquier momento?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content overflow-hidden transition-all duration-300 max-h-0">
+                        <div class="px-6 pb-4 text-gray-600">
+                            Sí, todos nuestros planes son mensuales sin compromisos a largo plazo. Puedes cancelar o cambiar de plan cuando lo necesites.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="bg-white rounded-lg border border-gray-200">
+                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-medium text-gray-900">¿Qué garantías ofrecen?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content overflow-hidden transition-all duration-300 max-h-0">
+                        <div class="px-6 pb-4 text-gray-600">
+                            Garantizamos resultados medibles en 60 días o te devolvemos tu dinero. Además, incluimos SLA de disponibilidad del 99.9% en planes Profesional y Empresa.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="bg-white rounded-lg border border-gray-200">
+                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-medium text-gray-900">¿Cuál es el ROI típico de los clientes?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content overflow-hidden transition-all duration-300 max-h-0">
+                        <div class="px-6 pb-4 text-gray-600">
+                            Nuestros clientes típicamente ven un retorno de inversión entre 2-6 meses, con ahorros promedio del 40-80% en costos operativos y reducción del 95% en errores humanos.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="bg-white rounded-lg border border-gray-200">
+                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-medium text-gray-900">¿Cómo calculan el ROI?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content overflow-hidden transition-all duration-300 max-h-0">
+                        <div class="px-6 pb-4 text-gray-600">
+                            Calculamos el ROI midiendo tiempo ahorrado, reducción de errores, costos operativos eliminados y nuevas oportunidades de negocio generadas. Proporcionamos dashboards detallados para rastrear estas métricas.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="bg-white rounded-lg border border-gray-200">
+                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-medium text-gray-900">¿Qué pasa si la automatización falla?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content overflow-hidden transition-all duration-300 max-h-0">
+                        <div class="px-6 pb-4 text-gray-600">
+                            Tenemos sistemas de monitoreo 24/7 y respaldo automático. Si algo falla, se activan alertas inmediatas y procesos de recuperación. Incluimos garantía de disponibilidad del 99.9%.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 9 -->
+                <div class="bg-white rounded-lg border border-gray-200">
+                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-medium text-gray-900">¿Cómo minimizan los riesgos de implementación?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content overflow-hidden transition-all duration-300 max-h-0">
+                        <div class="px-6 pb-4 text-gray-600">
+                            Seguimos un proceso gradual: análisis previo, pruebas en entorno controlado, implementación por fases, y monitoreo constante. Nunca interrumpimos operaciones críticas.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 10 -->
+                <div class="bg-white rounded-lg border border-gray-200">
+                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-medium text-gray-900">¿Cómo funciona la integración con IA?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content overflow-hidden transition-all duration-300 max-h-0">
+                        <div class="px-6 pb-4 text-gray-600">
+                            Integramos IA generativa para automatizar tareas complejas como análisis de documentos, generación de reportes, y toma de decisiones. Usamos GPT-4 y modelos especializados según la necesidad.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 11 -->
+                <div class="bg-white rounded-lg border border-gray-200">
+                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-medium text-gray-900">¿La IA puede aprender de nuestros datos específicos?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content overflow-hidden transition-all duration-300 max-h-0">
+                        <div class="px-6 pb-4 text-gray-600">
+                            Sí, entrenamos modelos personalizados con tus datos para mejorar precisión y relevancia. Todos los datos permanecen seguros y privados, cumpliendo con GDPR y regulaciones locales.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 12 -->
+                <div class="bg-white rounded-lg border border-gray-200">
+                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-medium text-gray-900">¿Cómo manejan el escalamiento?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content overflow-hidden transition-all duration-300 max-h-0">
+                        <div class="px-6 pb-4 text-gray-600">
+                            Nuestras automatizaciones escalan automáticamente según demanda. Si tu negocio crece 10x, las automatizaciones se adaptan sin necesidad de reconfiguración o costos adicionales.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-gray-900 text-white">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center fade-in">
+            <h2 class="text-4xl font-light mb-6">¿Listo para transformar tus operaciones?</h2>
+            <p class="text-xl text-gray-400 mb-8">Únete a las empresas líderes que reducen costos y escalan eficientemente con Automatique.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="openContactModal()" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-gray-900 bg-white rounded-full hover:bg-gray-100 transition">
+                    Habla con un asesor
+                </button>
+            </div>
+            <p class="mt-8 text-sm text-gray-500">Sin tarjeta de crédito • Configuración en minutos • Cancela cuando quieras</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Top Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Company Info -->
+                <div class="col-span-1">
+                    <h3 class="text-2xl font-semibold mb-4">Automatique<span class="accent-blue">.</span></h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Transformamos empresas con automatización inteligente sin código. 
+                        Soluciones rápidas, resultados medibles.
+                    </p>
+                    <!-- Social Links -->
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-gray-600 transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gray-600 transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gray-600 transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gray-600 transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gray-600 transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Enlaces -->
+                <div class="col-span-1">
+                    <h4 class="text-lg font-semibold mb-4">Enlaces</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900 hover-accent transition">Acerca de</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900 hover-accent transition">Blog</a></li>
+                        <li><a href="#pricing" class="text-gray-600 hover:text-gray-900 hover-accent transition">Precios</a></li>
+                        <li><a href="#faq" class="text-gray-600 hover:text-gray-900 hover-accent transition">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- JunoAI Group -->
+                <div class="col-span-2 lg:col-span-2">
+                    <div class="bg-gray-50 rounded-lg p-6 text-center">
+                        <p class="text-sm text-gray-600">
+                            Automatique es parte de 
+                            <a href="https://yuno.to" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium">Yuno AI</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Offices Section -->
+            <div class="border-t border-gray-200 pt-12 mb-12">
+                <h4 class="text-lg font-semibold mb-8">Nuestras Oficinas</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- NYC -->
+                    <div>
+                        <h5 class="font-semibold mb-2">NYC</h5>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            1 Bell Slip<br>
+                            Brooklyn, NY 11222
+                        </p>
+                    </div>
+                    <!-- Barcelona -->
+                    <div>
+                        <h5 class="font-semibold mb-2">Barcelona</h5>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Passeig del Mare Nostrum, 15<br>
+                            Ciutat Vella, 08039 Barcelona, Spain
+                        </p>
+                    </div>
+                    <!-- CDMX -->
+                    <div>
+                        <h5 class="font-semibold mb-2">CDMX</h5>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Av. P.º de la Reforma 296, Juárez<br>
+                            Cuauhtémoc, 06600, CDMX
+                        </p>
+                    </div>
+                    <!-- Paris -->
+                    <div>
+                        <h5 class="font-semibold mb-2">París</h5>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            40 Rue du Colisée<br>
+                            75008 Paris
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-600 mb-4 md:mb-0">
+                    © 2024 Automatique. Todos los derechos reservados.
+                </p>
+                <div class="flex space-x-6 text-sm text-gray-600">
+                    <a href="#" class="hover:text-gray-900 transition">Términos</a>
+                    <a href="#" class="hover:text-gray-900 transition">Privacidad</a>
+                    <a href="#" class="hover:text-gray-900 transition">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Initial page load animations
+        gsap.timeline()
+            .to('.fade-in', {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                stagger: 0.1,
+                ease: 'power3.out'
+            });
+            
+        // Animación de números
+        function animateNumbers() {
+            document.querySelectorAll('.number-animate').forEach(element => {
+                const finalValue = parseFloat(element.getAttribute('data-value'));
+                const isDecimal = element.getAttribute('data-value').includes('.');
+                
+                gsap.fromTo(element, 
+                    { textContent: 0 },
+                    {
+                        textContent: finalValue,
+                        duration: 2,
+                        ease: 'power2.out',
+                        snap: { textContent: isDecimal ? 0.1 : 1 },
+                        scrollTrigger: {
+                            trigger: element,
+                            start: 'top 80%',
+                            once: true
+                        },
+                        onUpdate: function() {
+                            if (isDecimal) {
+                                element.textContent = parseFloat(element.textContent).toFixed(1) + '%';
+                            } else {
+                                element.textContent = Math.round(element.textContent);
+                            }
+                        }
+                    }
+                );
+            });
+        }
+        
+        animateNumbers();
+
+        // Scroll-triggered animations
+        gsap.utils.toArray('.fade-in').forEach((element, index) => {
+            gsap.fromTo(element, 
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    delay: index * 0.1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 85%',
+                        once: true
+                    }
+                }
+            );
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Parallax effect for hero section
+        gsap.to('.relative .absolute', {
+            yPercent: -50,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.min-h-screen',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+
+        // FAQ Toggle Function
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.faq-icon');
+            const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-content').forEach(faq => {
+                if (faq !== content) {
+                    faq.style.maxHeight = '0px';
+                    faq.previousElementSibling.querySelector('.faq-icon').style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            // Toggle current FAQ
+            if (isOpen) {
+                content.style.maxHeight = '0px';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                icon.style.transform = 'rotate(45deg)';
+            }
+        }
+
+        // Contact Modal Functions
+        function openContactModal() {
+            document.getElementById('contactModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeContactModal();
+            }
+        });
+
+        // Close modal on background click
+        document.getElementById('contactModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeContactModal();
+            }
+        });
+    </script>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm hidden">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 m-4 max-w-md w-full relative animate-modal-enter">
+            <!-- Close button -->
+            <button onclick="closeContactModal()" class="absolute top-6 right-6 text-gray-400 hover:text-gray-600 transition">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+
+            <h2 class="text-2xl font-semibold mb-2">Habla con un Experto</h2>
+            <p class="text-gray-600 mb-8">Elige tu método de contacto preferido</p>
+
+            <!-- Contact Options -->
+            <div class="space-y-4">
+                <!-- Schedule Meeting -->
+                <a href="https://tidycal.com/hjbarraza/automatique" target="_blank" class="block w-full bg-blue-500 hover:bg-blue-600 text-white rounded-xl p-4 transition relative overflow-hidden group">
+                    <div class="absolute top-2 right-4 bg-white/20 text-xs font-medium px-2 py-1 rounded-full">Recomendado</div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <h3 class="font-semibold text-lg">Agendar Reunión</h3>
+                            <p class="text-white/90 text-sm">Programa una videollamada de 30 minutos</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- WhatsApp -->
+                <a href="https://wa.me/5218183663080?text=Hola,%20me%20gustaría%20obtener%20más%20información%20sobre%20los%20servicios%20de%20automatización%20de%20Automatique." target="_blank" class="block w-full bg-green-500 hover:bg-green-600 text-white rounded-xl p-4 transition group">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z"/>
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <h3 class="font-semibold text-lg">WhatsApp</h3>
+                            <p class="text-white/90 text-sm">Contacto inmediato por WhatsApp</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:contacto@automatique.com?subject=Consulta%20sobre%20automatización&body=Hola,%20me%20gustaría%20obtener%20más%20información%20sobre%20los%20servicios%20de%20automatización%20de%20Automatique." class="block w-full bg-gray-600 hover:bg-gray-700 text-white rounded-xl p-4 transition group">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <div class="text-left">
+                            <h3 class="font-semibold text-lg">Email</h3>
+                            <p class="text-white/90 text-sm">Envía un correo detallado</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <p class="text-sm text-gray-500 text-center mt-8">
+                Tiempo de respuesta: WhatsApp < 5 min | Email < 2 horas | Reunión programada
+            </p>
+        </div>
+    </div>
+</body>
+</html>
